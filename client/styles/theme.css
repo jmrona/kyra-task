@@ -1,0 +1,31 @@
+@theme {
+  --background: black;
+  --foreground: #ededed;
+
+  --color-cab-sav-50: #fff1f1;
+  --color-cab-sav-100: #ffe3e4;
+  --color-cab-sav-200: #ffccd0;
+  --color-cab-sav-300: #ffa1a9;
+  --color-cab-sav-400: #ff6d7c;
+  --color-cab-sav-500: #f93a53;
+  --color-cab-sav-600: #e7173c;
+  --color-cab-sav-700: #c30d32;
+  --color-cab-sav-800: #a30e31;
+  --color-cab-sav-900: #8b1031;
+  --color-cab-sav-950: #4e0315;
+  
+  --color-blue-zodiac-50: #eaf9ff;
+  --color-blue-zodiac-100: #d1f3ff;
+  --color-blue-zodiac-200: #acebff;
+  --color-blue-zodiac-300: #74e0ff;
+  --color-blue-zodiac-400: #33cbff;
+  --color-blue-zodiac-500: #04aaff;
+  --color-blue-zodiac-600: #0083ff;
+  --color-blue-zodiac-700: #006aff;
+  --color-blue-zodiac-800: #0057da;
+  --color-blue-zodiac-900: #004faa;
+  --color-blue-zodiac-950: #042651;
+
+  --color-pill-bg: #171717cc;
+  --color-pill-active-bg: #262626;
+}

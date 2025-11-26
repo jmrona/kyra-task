@@ -10,7 +10,7 @@ const STATUS_BADGE = {
   IN_BRAND_REVIEW: { variant: "purple" as const, label: "In Brand Review", icon: CircleAlert, iconClassName: "text-purple-900 fill-purple-500" },
   PENDING_ADMIN_REVIEW: { variant: "pending" as const, label: "Pending Admin Review", icon: CircleAlert, iconClassName: "text-yellow-900 fill-yellow-500" },
   AWAITING_ASSET: { variant: "blue" as const, label: "Awaiting Asset", icon: CirclePause, iconClassName: "text-blue-300" },
-}
+} as const;
 
 export default async function Asset({asset}: {asset: Asset}) {
   const comments = await getComments(asset.id) || [];

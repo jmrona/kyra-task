@@ -1,10 +1,4 @@
-export type Comment = {
-  id: number;
-  assetId: number;
-  name: string;
-  timestamp: string;
-  comment: string;
-};
+import { Comment } from "@/types/comment";
 
 export async function getComments(assetId: number): Promise<Comment[] | []> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/assets/${assetId}/comments`, {

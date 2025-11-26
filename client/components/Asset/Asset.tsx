@@ -1,22 +1,8 @@
 import { type Asset } from "@/lib/getAssets";
 import Badge from "../Badge/Badge";
 import { CircleAlert, CircleCheck, CirclePause, CircleX, type Icon, IconNode, MessageSquare, Split } from "lucide-react";
+import { getComments } from "@/lib/getComments";
 
-
-async function getComments(assetId: number) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/assets/${assetId}/comments`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch comments");
-  }
-
-  return response.json();
-}
 
 const STATUS_BADGE = {
   APPROVED: { variant: "approved" as const, label: "Final Approved" , icon: CircleCheck, iconClassName: "text-lime-300"},

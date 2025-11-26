@@ -3,7 +3,7 @@ import React from "react";
 import { twMerge } from "tailwind-merge";
 
 import Asset from "../Asset/Asset";
-import { type Asset as AssetType } from "@/lib/getAssets";
+import { type Asset as AssetType } from "@/app/types/asset";
 import { StatusUrlParams } from "../StatusFilter/StatusFilter";
 
 type VideoListProps = React.HTMLAttributes<HTMLDivElement> & {

@@ -1,4 +1,4 @@
-import { type Asset } from "@/lib/getAssets";
+import { type Asset } from "@/app/types/asset";
 import Badge from "../Badge/Badge";
 import { CircleAlert, CircleCheck, CirclePause, CircleX, type Icon, IconNode, MessageSquare, Split } from "lucide-react";
 import { getComments } from "@/lib/getComments";

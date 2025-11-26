@@ -1,4 +1,4 @@
-import { type Asset } from "@/app/types/asset";
+import { type Asset } from "@/types/asset";
 import { cacheLife } from "next/cache";
 
 export const getAssets = async (): Promise<Array<Asset>> => {

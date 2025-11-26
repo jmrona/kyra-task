@@ -8,7 +8,9 @@ const variantClasses = {
   yellow: "bg-yellow-600 text-yellow-900 border border-yellow-700/60",
   green: "bg-green-800 text-green-100",
   "green-400": "bg-green-300/40 text-green-100 border border-green-300/10",
-  purple: "bg-purple-300/60 text-purple-900"
+  purple: "bg-purple-300/60 text-purple-900",
+  approved: "bg-lime-300 text-lime-900 border border-lime-300/20",
+  pending: "bg-yellow-900 text-yellow-500 border border-yellow-500/20",
 } as const;
 
 export type BadgeProps = {

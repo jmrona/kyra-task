@@ -26,6 +26,18 @@
   --color-blue-zodiac-900: #004faa;
   --color-blue-zodiac-950: #042651;
 
+  --color-lime-50: #e8feca;
+  --color-lime-100: #cffe7a;
+  --color-lime-200: #baef44;
+  --color-lime-300: #9fcd39;
+  --color-lime-400: #86ad2f;
+  --color-lime-500: #6e8f25;
+  --color-lime-600: #56711b;
+  --color-lime-700: #405412;
+  --color-lime-800: #2b3a09;
+  --color-lime-900: #172103;
+  --color-lime-950: #0e1602;
+  
   --color-pill-bg: #171717cc;
   --color-pill-active-bg: #262626;
 }

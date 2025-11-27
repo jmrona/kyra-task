@@ -1,6 +1,9 @@
 @theme {
   --background: black;
   --foreground: #ededed;
+  
+  --scrollbar-thumb: #444444;
+  --scrollbar-track: #1a1a1a;
 
   --color-cab-sav-50: #fff1f1;
   --color-cab-sav-100: #ffe3e4;

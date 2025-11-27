@@ -8,3 +8,7 @@ body {
   max-width: 100dvw;
   min-height: 100dvh;
 }
+
+.dark-scrollbar {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}

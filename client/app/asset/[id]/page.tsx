@@ -37,7 +37,7 @@ export default async function Asset({
   ];
 
   return (
-    <main className="bg-[#111013] min-h-screen justify-center">
+    <main className="bg-[#111013] min-h-screen">
       <Header
         showBreadcrumbs={false}
         showBadges={false}

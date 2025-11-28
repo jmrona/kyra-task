@@ -1,23 +1,24 @@
 import { ChevronLeftIcon } from "lucide-react";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 import Badge, { BadgeProps } from "../Badge/Badge";
+import { twMerge } from "tailwind-merge";
 
 type HeaderProps = {
-  breadcrumbs: { label: string; href: string | null }[];
+  breadcrumbs?: { label: string; href: string | null }[];
   children: React.ReactNode;
   showBreadcrumbs?: boolean;
   showBadges?: boolean;
   badges?: { variant: BadgeProps["variant"]; label: string }[];
-}
+} & React.HTMLAttributes<HTMLDivElement>;
 
-export default function Header({breadcrumbs, children, showBreadcrumbs, showBadges, badges}: HeaderProps) {
+export default function Header({breadcrumbs, children, showBreadcrumbs, showBadges, badges, className}: HeaderProps) {
   return (
-    <header className="flex flex-col gap-3">
-      {showBreadcrumbs && <BreadCrumbs history={breadcrumbs} />}
+    <header className={twMerge("flex flex-col gap-3", className)}>
+      {(showBreadcrumbs && breadcrumbs) && <BreadCrumbs history={breadcrumbs} />}
 
-      <button className="flex gap-2 items-center cursor-pointer" aria-label="Go back">
-        <ChevronLeftIcon className="text-gray-400" width={20} /> <h1 className="text-2xl font-black text-white">{children}</h1>
-      </button>
+      <div className="flex gap-2 items-center grow" data-slot="content">
+        {children}
+      </div>
 
       {showBadges &&<div className="flex gap-2">
         {badges?.map((badge, index) => (

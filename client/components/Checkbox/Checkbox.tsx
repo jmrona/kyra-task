@@ -26,7 +26,7 @@ export default function Checkbox({children, id, name, labelPosition = 'right', c
       <span className="inline-flex peer-checked/checkbox:border-lime-300 peer-checked/checkbox:bg-lime-300 peer-focus/checkbox:ring-2 peer-focus/checkbox:ring-blue-600 peer-focus/checkbox:ring-offset-2 peer-focus/checkbox:ring-offset-neutral-900 border border-neutral-500 w-4 h-4 rounded-sm relative">
         <Check
           size={14}
-          className="text-transpa rent group-[:has(input:checked)]:text-black"
+          className="text-transparent group-[:has(input:checked)]:text-black"
           data-slot="icon"
         />
       </span>

@@ -43,10 +43,12 @@ export default function AssetDetails({ asset }: AssetDetailsProps) {
     }
   };
 
-  const handleCopyUrl = (e) => {
-    try {
-      if(e.target.value.trim() === '') return;
+  const handleCopyUrl = (e: React.MouseEvent<HTMLInputElement>) => {
+    const input = e.currentTarget;
+  
+    if (!input.value || input.value.trim() === '') return;
 
+    try {
       if (navigator.clipboard) {
         navigator.clipboard.writeText(asset.soundUrl).catch((err) => {
           console.error('Failed to copy URL:', err);

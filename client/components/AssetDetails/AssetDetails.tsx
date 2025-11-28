@@ -1,17 +1,19 @@
 'use client';
 
 import { useState } from "react";
-import { type Asset, type AssetStatus } from "@/types/asset";
-import Badge from "../Badge/Badge";
-import { getStatusBadge } from "@/lib/getStatusBadge";
 import { ArrowUpRightIcon, CircleAlert, Link } from "lucide-react";
+import { twMerge } from "tailwind-merge";
+
+import { type Asset, type AssetStatus } from "@/types/asset";
+import { getStatusBadge } from "@/lib/getStatusBadge";
+import { updateAssetStatus } from "@/lib/updateAssetStatus";
+
+import Badge from "../Badge/Badge";
 import Field from "../Field/Field";
 import Textarea from "../Textarea/Textarea";
 import StatusDropdown from "../StatusDropdown/StatusDropdown";
-import { updateAssetStatus } from "@/lib/updateAssetStatus";
-import { set } from "zod";
-import { twMerge } from "tailwind-merge";
 import Alert from "../Alert/Alert";
+
 
 type AssetDetailsProps = {
   asset: Asset | Record<string, never>;

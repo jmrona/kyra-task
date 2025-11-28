@@ -1,73 +1,322 @@
 # Kyra Frontend Assignment: Asset Review
 
-## Goal
+A full-stack asset management and review platform built with Next.js 16, React 19, and Nitro for API backend.
 
-Recreate the **Asset Review feature** shown in the reference screenshots.  
-Interpret requirements from the designs and implement what you believe is the correct behavior.
+## 🚀 Quick Start
 
-Constraints:
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn package manager
 
-* Use **React**.
-* The implementation must be **responsive** and **usable on mobile**.
-* Use any tooling or libraries you prefer.
+### Running the Application
 
----
+1. **Clone the repository**
+```bash
+git clone <repository-url>
+cd kyra
+```
 
-## Reference Screens & Notes
+2. **Set up environment variables**
 
-Use the provided designs as your only source of truth.  
-The brief notes below are descriptive (what the UI appears to convey), not prescriptive (how it must work). If something is unclear, make a sensible call and implement your decision.
+Create `.env` files for both client and API:
 
-| Assets                                        | Asset Review                                             | Comments View                                                      |
-| --------------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------ |
-| ![Assets page](./docs/images/assets-page.png) | ![Asset Review](./docs/images/asset-review-overview.png) | ![Assets Review comments](./docs/images/asset-review-comments.png) |
+```bash
+# client/.env.local
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
 
-### 1) Assets (collection view)
+```bash
+# api/.env
+CLIENT_URL=http://localhost:4000
+```
 
-* Display a grid of asset cards.
-* Each card should display the asset's status, creator name/avatar, and deliverable title.
-* Assets are grouped by status.
-* Filters exist to switch between workflow stages.
-* Clicking a card opens the **Asset Review** screen for that item
+3. **Start the API server** (Terminal 1)
+```bash
+cd api
+npm install
+npm run dev
+```
+The API will run on `http://localhost:3000`
 
+4. **Start the client application** (Terminal 2)
+```bash
+cd client
+npm install
+npm run dev
+```
+The app will be available at `http://localhost:4000`
 
-### 2) Asset Review — Overview
-
-* The screen is split into **two panels**:
-  * Left panel:
-    * Displays the asset's media and metadata.
-    * Includes a top bar with the asset's status and an "Edit Status" action.
-  * Right panel (**Overview** tab):
-    * Displays brand and brief metadata.
-    * Shows deliverable info.
-    * Has a section titled **“Caption & Sound Instructions”**.
-
-
-### 3) Asset Review — Messages
-
-* Same two-pane layout; **right tab is “Messages.”**
-* Shows a **conversation thread** with participant avatars/names, **timestamps**, and **inline link previews** (e.g., a URL rendered as a chip).
-* The composer includes a **text input** and an **upload/submit button**.
-
+5. **Open your browser** and navigate to `http://localhost:4000`
 
 ---
 
-## Mock Data
+## 🏗️ Tech Stack
 
-This repository already includes a Nitro project inside the `api/` folder.  
-That server provides mock API endpoints for you to consume in your React project. 
+### Frontend (`/client`)
+- **Framework:** Next.js 16 (App Router)
+- **React:** 19.x with Server Components
+- **Styling:** Tailwind CSS v4
+- **State Management:** React Server Actions, useActionState
+- **Validation:** Zod
+- **Icons:** Lucide React
+- **Testing:** Vitest + Playwright (Browser Mode)
+- **TypeScript:** Full type safety
 
-To start the mock API, navigate into the `api/` directory and run the Nitro dev server.
+### Backend (`/api`)
+- **Framework:** Nitro (UnJS)
+- **Runtime:** Node.js
+- **Storage:** In-memory storage
+- **Validation:** Zod
+- **CORS:** Configured for local development
 
 ---
 
-## Evaluation Criteria
+## 📁 Project Structure
 
-We'll evaluate your submission as a whole - not only the final result, but also how it reflects your understanding of the problem and your ability to turn ambiguous requirements into a coherent, maintainable product experience.  
-There are no hidden requirements or preferred libraries. Build it as you would in a real environment where the goal is clarity, reliability, and usability.
+```
+kyra/
+├── api/                      # Backend API (Nitro)
+│   ├── server/
+│   │   ├── api/             # API endpoints
+│   │   │   └── assets/      # Asset endpoints
+│   │   ├── middleware/      # CORS middleware
+│   │   └── plugins/         # Seed data plugin
+│   └── seed/                # Mock data (assets.json, comments.json)
+│
+├── client/                   # Frontend (Next.js)
+│   ├── actions/             # Server Actions
+│   │   └── __tests__/       # Action tests
+│   ├── app/                 # App Router pages
+│   │   ├── asset/[id]/      # Asset detail page
+│   │   ├── validations/     # Form validation schemas
+│   │   │   └── __tests__/   # Validation tests
+│   │   ├── error.tsx        # Error boundary
+│   │   └── loading.tsx      # Loading state
+│   ├── components/          # React components
+│   │   ├── Alert/
+│   │   ├── Asset/
+│   │   ├── AssetDetails/
+│   │   ├── AssetMessages/
+│   │   ├── Badge/
+│   │   ├── Checkbox/
+│   │   ├── StatusDropdown/
+│   │   │   └── StatusDropdown.test.tsx
+│   │   └── ...
+│   ├── lib/                 # Utility functions
+│   │   ├── getAssets.ts
+│   │   ├── getComments.ts
+│   │   └── __tests__/       # Utility tests
+│   ├── styles/              # Global styles
+│   └── types/               # TypeScript definitions
+│
+└── docs/
+    └── images/              # Reference designs
+```
 
 ---
 
-## Submission
+## ✨ Features Implemented
 
-To submit your work, fork this repository, complete the assignment in your fork, and share the link to your fork with us. You may also include a live deployment if you'd like (for example, on Vercel or Netlify). 
+### 1. Assets Collection View
+- ✅ Grid layout with asset cards
+- ✅ Status badges with color coding
+- ✅ Creator profile information
+- ✅ Deliverable metadata
+- ✅ Status filter tabs (All, Awaiting Asset, Pending Review, etc.)
+- ✅ Responsive design (mobile & desktop)
+- ✅ Loading skeletons
+
+### 2. Asset Review - Overview Tab
+- ✅ Two-panel layout (details + overview)
+- ✅ Video and thumbnail preview
+- ✅ Status badge with edit dropdown
+- ✅ Sound URL with copy-to-clipboard
+- ✅ Creator caption display
+- ✅ Brand and deliverable information
+- ✅ Tab navigation (Overview/Messages)
+
+### 3. Asset Review - Messages Tab
+- ✅ Real-time comment thread
+- ✅ User avatars with deterministic colors
+- ✅ Timestamp display
+- ✅ Comment form with validation
+- ✅ Internal message toggle
+- ✅ Timestamp toggle with time picker
+- ✅ Optimistic UI updates
+- ✅ Custom scrollbar styling
+- ✅ Scroll overscroll containment
+
+### 4. Additional Features
+- ✅ **Status Management:** Update asset status via dropdown
+- ✅ **Form Validation:** Zod schemas for comments
+- ✅ **Error Handling:** Error boundaries and error states
+- ✅ **Loading States:** Skeleton screens for better UX
+- ✅ **Accessibility:** ARIA labels, keyboard navigation, focus states
+- ✅ **Responsive Design:** Mobile-first approach
+- ✅ **Testing Suite:** Unit, integration, and component tests
+
+---
+
+## 🧪 Testing
+
+Run tests with:
+```bash
+cd client
+npm run test
+```
+
+**Test Coverage:**
+- ✅ Zod validation schemas (`commentSchema`)
+- ✅ Utility functions (`getStatusBadge`)
+- ✅ Interactive components (`StatusDropdown`)
+- ✅ Server Actions (`submitComment`)
+
+Tests use **Vitest** with **Playwright** in browser mode for realistic component testing.
+
+---
+
+## 🎨 Design Implementation
+
+The implementation follows the provided reference designs:
+
+| Assets View | Asset Detail - Overview | Asset Detail - Messages |
+|-------------|------------------------|------------------------|
+| ![Assets](./docs/images/assets-page.png) | ![Overview](./docs/images/asset-review-overview.png) | ![Messages](./docs/images/asset-review-comments.png) |
+
+### Design Decisions
+- **Color Palette:** Dark theme with neutral grays and accent colors
+- **Typography:** Geist Sans font family
+- **Spacing:** Consistent 8px grid system
+- **Components:** Reusable, composable component architecture
+- **Animations:** Subtle transitions and loading states
+
+---
+
+## 🔧 API Endpoints
+
+### Assets
+- `GET /api/assets` - List all assets
+- `GET /api/assets/:id` - Get single asset
+- `PATCH /api/assets/:id` - Update asset status
+
+### Comments
+- `GET /api/assets/:id/comments` - Get asset comments
+- `POST /api/assets/:id/comments` - Create new comment
+
+**Note:** Data is stored in-memory and resets on server restart.
+
+---
+
+## 🚢 Deployment
+
+### Vercel (Recommended)
+Both client and API are configured for Vercel deployment:
+
+1. **Deploy API:**
+```bash
+cd api
+vercel
+```
+
+2. **Deploy Client:**
+```bash
+cd client
+vercel
+```
+
+Update environment variables in Vercel dashboard to point to production API URL.
+
+### Other Platforms
+- Client can be deployed to any Next.js hosting (Netlify, Railway, etc.)
+- API can be deployed to any Node.js hosting with Nitro support
+
+---
+
+## 🔐 Environment Variables
+
+### Client (`client/.env.local`)
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
+
+### API (`api/.env`)
+```env
+CLIENT_URL=http://localhost:4000
+```
+
+---
+
+## 🛠️ Development
+
+### Available Scripts
+
+**Client:**
+```bash
+npm run dev          # Start dev server (port 4000)
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npm run test         # Run tests
+```
+
+**API:**
+```bash
+npm run dev          # Start dev server (port 3000)
+```
+
+---
+
+## 📝 Key Implementation Details
+
+### Performance Optimizations
+- Server Components for zero-bundle overhead
+- React Compiler enabled for automatic memoization
+- `'use cache'` directive for data fetching
+- Lazy loading with Suspense boundaries
+- Optimized images and videos
+
+### Code Quality
+- TypeScript strict mode
+- ESLint configuration
+- Consistent code formatting
+- Component-level tests
+- Type-safe API calls
+
+### User Experience
+- Instant feedback on form submissions
+- Optimistic UI updates
+- Loading skeletons during data fetching
+- Error boundaries for graceful error handling
+- Accessible components (ARIA, keyboard navigation)
+
+---
+
+## 📦 Project Requirements Met
+
+### Original Assignment Goals
+✅ Recreate the **Asset Review feature** from reference designs  
+✅ Use **React** (React 19 with Server Components)  
+✅ **Responsive** and **usable on mobile**  
+✅ Maintainable, production-quality code  
+
+### Technical Implementation
+✅ Modern Next.js 16 App Router architecture  
+✅ Type-safe with TypeScript throughout  
+✅ Form validation with Zod  
+✅ Error handling and loading states  
+✅ Comprehensive test coverage  
+✅ CORS-configured API backend  
+✅ Clean component architecture  
+✅ Accessibility best practices  
+
+---
+
+## 🤝 Contributing
+
+This is a technical assessment project. For questions or issues, please contact the project maintainer.
+
+---
+
+## 📄 License
+
+This project is for educational and assessment purposes only.

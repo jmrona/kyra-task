@@ -8,6 +8,8 @@ import { type Asset, type AssetStatus } from "@/types/asset";
 import { getStatusBadge } from "@/lib/getStatusBadge";
 import { updateAssetStatus } from "@/lib/updateAssetStatus";
 
+import { useCopyClipboard } from "@/hooks/useCopyClipboard";
+
 import Badge from "../Badge/Badge";
 import Field from "../Field/Field";
 import Textarea from "../Textarea/Textarea";
@@ -23,7 +25,7 @@ export default function AssetDetails({ asset }: AssetDetailsProps) {
   const [currentStatus, setCurrentStatus] = useState<AssetStatus>(asset.status);
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [copySuccess, setCopySuccess] = useState<boolean | null>(null);
+  const {copySuccess, handleCopyUrl} = useCopyClipboard()
 
   const statusBadge = getStatusBadge(currentStatus);
   const IconComponent = statusBadge?.icon || CircleAlert;
@@ -42,33 +44,6 @@ export default function AssetDetails({ asset }: AssetDetailsProps) {
       setIsUpdating(false);
     }
   };
-
-  const handleCopyUrl = (e: React.MouseEvent<HTMLInputElement>) => {
-    const input = e.currentTarget;
-  
-    if (!input.value || input.value.trim() === '') return;
-
-    try {
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(asset.soundUrl).catch((err) => {
-          console.error('Failed to copy URL:', err);
-        });
-      } else {
-        const textArea = document.createElement('textarea');
-        textArea.value = asset.soundUrl;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-      }
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(null), 2000);
-    } catch (err) {
-      console.error('Failed to copy URL:', err);
-      setCopySuccess(false);
-      setTimeout(() => setCopySuccess(null), 2000);
-    }
-  }
 
   return (
     <article className="flex flex-col justify-start grow px-5 pt-5 pb-15 h-fill">
@@ -144,7 +119,7 @@ export default function AssetDetails({ asset }: AssetDetailsProps) {
           value={asset.soundUrl}
           type="url"
           readOnly={true}
-          onClick={handleCopyUrl}
+          onClick={() => handleCopyUrl(asset.soundUrl)}
           className={twMerge(
             copySuccess === true && "[&_[data-slot='input']]:border-green-500 [&_[data-slot='input']]:focus:ring-green-500",
             copySuccess === false && "[&_[data-slot='input']]:border-red-500 [&_[data-slot='input']]:focus:ring-red-500"

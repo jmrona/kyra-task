@@ -88,8 +88,6 @@ kyra/
 │   │   └── __tests__/       # Action tests
 │   ├── app/                 # App Router pages
 │   │   ├── asset/[id]/      # Asset detail page
-│   │   ├── validations/     # Form validation schemas
-│   │   │   └── __tests__/   # Validation tests
 │   │   ├── error.tsx        # Error boundary
 │   │   └── loading.tsx      # Loading state
 │   ├── components/          # React components
@@ -107,7 +105,9 @@ kyra/
 │   │   ├── getComments.ts
 │   │   └── __tests__/       # Utility tests
 │   ├── styles/              # Global styles
-│   └── types/               # TypeScript definitions
+│   ├── types/               # TypeScript definitions
+│   └── validations/         # Form validation schemas
+│       └── __tests__/       # Validation tests
 │
 └── docs/
     └── images/              # Reference designs

@@ -64,10 +64,15 @@ export const submitComment = async (prevState: FormState, data: FormData) => {
       }
     }
   } catch (error) {
+    const errorMessage = error instanceof Error 
+    ? error.message 
+    : 'Failed to submit comment. Please try again.';
+    
+
     return {
       success: false,
       newComment: {},
-      errors: { message: ['Failed to submit comment. Please try again.'] },
+      errors: { message: [errorMessage] },
       data: {
         assetId: prevState.data.assetId,
         message,

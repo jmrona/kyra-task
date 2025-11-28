@@ -1,13 +1,13 @@
 export type AssetStatus = 
   | 'APPROVED' 
   | 'PENDING_ADMIN_REVIEW' 
-  | 'IN_BRAND_REVIEW'
+  | 'PENDING_BRAND_REVIEW'
   | 'REJECTED'
   | 'AWAITING_ASSET';
   
 export type Brief = {
   id: number;
-  title: string;
+  name: string;
 };
 
 export type Asset = {

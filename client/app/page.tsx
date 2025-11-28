@@ -3,6 +3,9 @@ import StatusFilter, { type StatusUrlParams } from "@/components/StatusFilter/St
 import AssetsList from "@/components/AssetsList/AssetsList";
 import { Suspense } from "react";
 import { getAssets } from "@/lib/getAssets";
+import Link from "next/link";
+import { ChevronLeftIcon } from "lucide-react";
+import AssetsListSkeleton from "@/components/AssetsList/AssetsListSkeleton";
 
 const breadcrumbs = [
   { label: "Brands", href: "#" },
@@ -28,19 +31,22 @@ export default async function Assets({
 
   return (
     <>
-      <div className="min-h-screen justify-center px-3 py-3 md:px-6 md:py-6 max-w-6xl mx-auto flex-col">
+      <div className="min-h-screen px-3 py-3 md:px-6 md:py-6 max-w-6xl mx-auto">
         <Header
           showBreadcrumbs={true}
           breadcrumbs={breadcrumbs}
           showBadges={true}
           badges={badges}
         >
-          #KyraChallenge
+          <Link href="#" className="cursor-pointer" aria-label="Go back">
+            <ChevronLeftIcon className="text-gray-400" size={25} /> 
+          </Link>
+          <h1 className="text-2xl font-black text-white">#KyraChallenge</h1>
         </Header>
 
         <main className="grow w-full py-12">
           <StatusFilter assets={assets} />
-          <Suspense fallback={<div className="flex w-full justify-center mt-15">Loading...</div>}>
+          <Suspense fallback={<AssetsListSkeleton />}>
             <AssetsList assets={assets} status={params.status ?? 'all'} className="mt-10"/>
           </Suspense>
         </main>

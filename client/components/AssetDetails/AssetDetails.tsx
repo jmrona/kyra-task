@@ -121,8 +121,8 @@ export default function AssetDetails({ asset }: AssetDetailsProps) {
           readOnly={true}
           onClick={() => handleCopyUrl(asset.soundUrl)}
           className={twMerge(
-            copySuccess === true && "[&_[data-slot='input']]:border-green-500 [&_[data-slot='input']]:focus:ring-green-500",
-            copySuccess === false && "[&_[data-slot='input']]:border-red-500 [&_[data-slot='input']]:focus:ring-red-500"
+            copySuccess === true && "**:data-[slot='input']:border-green-500 **:data-[slot='input']:focus:ring-green-500",
+            copySuccess === false && "**:data-[slot='input']:border-red-500 **:data-[slot='input']:focus:ring-red-500"
           )}          
           iconLeft={
             <Link

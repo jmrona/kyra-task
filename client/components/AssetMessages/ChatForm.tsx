@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 import { ArrowUp } from "lucide-react";
 
 import { type Comment } from "@/types/comment";
-import { actions } from "@/app/actions";
+import { actions } from "@/actions";
 import Alert from "../Alert/Alert";
 import Textarea from "../Textarea/Textarea";
 import Checkbox from "../Checkbox/Checkbox";

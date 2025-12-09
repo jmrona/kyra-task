@@ -46,7 +46,7 @@ export default async function Assets({
 
         <main className="grow w-full py-12">
           <StatusFilter assets={assets} />
-          <Suspense fallback={<AssetsListSkeleton />}>
+          <Suspense key={params.status ?? 'all'} fallback={<AssetsListSkeleton />}>
             <AssetsList assets={assets} status={params.status ?? 'all'} className="mt-10"/>
           </Suspense>
         </main>
